@@ -1,6 +1,7 @@
-import reflex as rx
-from typing import Union, List
 import csv
+from typing import List
+
+import reflex as rx
 
 
 class Item(rx.Base):
