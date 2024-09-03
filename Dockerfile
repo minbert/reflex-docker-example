@@ -1,5 +1,5 @@
 # This Dockerfile is used to deploy a simple single-container Reflex app instance.
-FROM python:slim
+FROM python:bookworm
 
 # Copy local context to `/app` inside container (see .dockerignore)
 WORKDIR /app
