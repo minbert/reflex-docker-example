@@ -24,8 +24,6 @@ jobs:
         with:
           images: |
             minbert/reflex-docker-example
-          tags: |
-            type=semver,pattern={{version}}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
