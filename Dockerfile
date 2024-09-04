@@ -26,6 +26,9 @@ RUN $uv pip install -r requirements.txt
 # Deploy templates and prepare app
 RUN reflex init
 
+# Export static copy of frontend to /app/.web/_static
+RUN reflex export --frontend-only --no-zip
+
 # Stage 2: copy artifacts into slim image 
 FROM python:slim
 WORKDIR /app
@@ -34,6 +37,7 @@ COPY --chown=reflex --from=init /app /app
 # Install libpq-dev for psycopg2 (skip if not using postgres).
 USER reflex
 ENV PATH="/app/.venv/bin:$PATH"
+RUN echo $PATH
 
 # Needed until Reflex properly passes SIGTERM on backend.
 STOPSIGNAL SIGKILL
